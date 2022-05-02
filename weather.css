@@ -44,3 +44,8 @@
 #show>p{
     padding: 1%;
 }
+
+#city_name, button{
+    padding: 1%;
+    border-radius: 15px;
+}
