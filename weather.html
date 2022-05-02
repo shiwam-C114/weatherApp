@@ -25,8 +25,9 @@
     <script>
 
         const bgImg = {
-            "clear sky": "https://www.cheatsheet.com/wp-content/uploads/2020/03/Rick-and-Morty-Season-4.jpg",
-            "haze":"https://miro.medium.com/max/1400/1*bU3oUOk3eey0PoB-1scD9A.png"
+            "Clear": "https://www.cheatsheet.com/wp-content/uploads/2020/03/Rick-and-Morty-Season-4.jpg",
+            "Haze":"https://miro.medium.com/max/1400/1*bU3oUOk3eey0PoB-1scD9A.png",
+            "Clouds": "https://www.gamespot.com/a/uploads/scale_medium/171/1712892/3676290-17.png"
 
         }
 
@@ -74,8 +75,8 @@
 
 
             // changing bg according to weather
-            document.querySelector(".main-content").style.backgroundImage = `url(${bgImg[data.weather[0].description]})`;
-             document.querySelector(".bg").style.backgroundImage = `url(${bgImg[data.weather[0].description]})`;
+             document.querySelector(".main-content").style.backgroundImage = `url(${bgImg[data.weather[0].main]})`;
+             document.querySelector(".bg").style.backgroundImage = `url(${bgImg[data.weather[0].main]})`;
 
         }
 
