@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>weather app</title>
     <link rel="stylesheet" href="weather.css">
+    
+   
 </head>
 <body>
     <div class="bg">
@@ -21,6 +23,12 @@
             </div>
         </div>
     <script>
+
+        const bgImg = {
+            "clear sky": "https://www.cheatsheet.com/wp-content/uploads/2020/03/Rick-and-Morty-Season-4.jpg",
+            "haze":"https://miro.medium.com/max/1400/1*bU3oUOk3eey0PoB-1scD9A.png"
+
+        }
 
         async function getWeather() {
             let city = document.getElementById("city_name")
@@ -62,7 +70,13 @@
 
              show.append(temp,humidity,pressure,wSpeed,sunrise, sunset)
 
-             console.log("data to print--", data.weather[0].description, data.main.temp, data.main.humidity, data.main.pressure, data.wind.speed, data.sys.sunrise, data.sys.sunset)
+             console.log("data to print--",typeof data.weather[0].description, data.main.temp, data.main.humidity, data.main.pressure, data.wind.speed, data.sys.sunrise, data.sys.sunset, bgImg[data.weather[0].description])
+
+
+            // changing bg according to weather
+            document.querySelector(".main-content").style.backgroundImage = `url(${bgImg[data.weather[0].description]})`;
+             document.querySelector(".bg").style.backgroundImage = `url(${bgImg[data.weather[0].description]})`;
+
         }
 
 
