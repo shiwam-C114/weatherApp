@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather app</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+<body>
+    <div class="main-content">
+        <nav class="navbar">
+            <h1>Weather App</h1>
+        </nav>
+        <div style="text-align: center">
+            <input  type="text" name="" id="city_name" placeholder="Enter city name">
+            <button onclick="getWeather()">submit</button>
+            <div id="show"></div>
+        </div>
+    </div>
+    <script>
+
+        async function getWeather() {
+            let city = document.getElementById("city_name")
+            const api = `37d8cc6c2fe5746fa09d152576a16fb8`
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${api}`
+            let res = await fetch(url)
+            let data = await res.json()
+            console.log(data)
+            display(data)
+        }
+
+        function display(data) {
+
+            let show =  document.getElementById("show")
+             console.log(data)
+             show.innerHTML = ""
+             let temp = document.createElement("p")
+             temp.innerText = "Temperature: " + data.main.temp
+             let humidity = document.createElement("p")
+             humidity.innerText = "Humidity: " + data.main.humidity
+             let pressure = document.createElement("p")
+             pressure.innerText = "Pressure: " + data.main.pressure
+             let wSpeed = document.createElement("p")
+             wSpeed.innerText = "Wind speed: " + data.wind.speed
+             let sunrise = document.createElement("p")
+             sunrise.innerText = "Sunrise: " + data.sys.sunrise
+             let sunset = document.createElement("p")
+             sunset.innerText = "Sunset: " + data.sys.sunset
+
+             show.append(temp,humidity,pressure,wSpeed,sunrise, sunset)
+
+             console.log("data to print--", data.weather[0].description, data.main.temp, data.main.humidity, data.main.pressure, data.wind.speed, data.sys.sunrise, data.sys.sunset)
+        }
+
+
+    </script>
+</body>
+</html>
